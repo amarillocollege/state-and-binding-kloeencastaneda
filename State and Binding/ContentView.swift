@@ -6,30 +6,63 @@
 //
 
 import SwiftUI
-
-
+    
 struct ContentView: View {
-    @State private var counter = 1
+    
+    @State var button1:Int = 0
+    
+    @State var button2:Int = 0
+    
+    @State var button3:Int = 0
     
     var body: some View {
-        VStack {
+        
+            VStack {
+                
+                Text("\(button1 + button2 + button3)")
+                    .font(.system(size: 200,  design: .rounded))
+                    .fontWeight(.black)
+                
+                HStack{
+                    
+                    ButtonIncrease(counter: $button1, color: .milkBrown)
+                    
+                    ButtonIncrease(counter: $button2, color: .mocha)
+                    
+                    ButtonIncrease(counter: $button3, color: .neutralBrown)
+                } //HStack
+            } //VStack
+        } //view
+    
+    struct ButtonIncrease: View {
+        @Binding var counter: Int
+        var color: Color
+        var body: some View {
+            
             Button {
-                counter += 1
+                
+                counter = counter + 1
+                    
             } label: {
+                
                 Circle()
                     .frame(width: 200, height: 200)
-                    .foregroundStyle(.red)
+                    .foregroundStyle(color)
                     .overlay {
                         Text("\(counter)")
-                            .font(.system(size: 100, weight: .bold, design: .rounded))
-                            .foregroundStyle(.white)
-                    }
+                            .font(.system(size: 100,  design: .rounded))
+                            .fontWeight(.black)
+                            .foregroundStyle(.milk2)
+                }
             }
-            
         }
-    }
-}
-
-#Preview {
-    ContentView()
-}
+        
+        
+#if DEBUG
+        struct ContentView_Previews : PreviewProvider {
+            static var previews: some View {
+                ContentView()
+            }
+        }
+#endif
+    }}
