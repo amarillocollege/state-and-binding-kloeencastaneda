@@ -2,14 +2,14 @@
 //  ContentView.swift
 //  State and Binding
 //
-//  Created by [YOUR NAME GOES HERE]
+//  Created by Kloee Pratt-Castaenda
 //
 
 import SwiftUI
 
 
 struct ContentView: View {
-    var counter = 1
+    @State private var counter = 1
     
     var body: some View {
         VStack {
